@@ -34,35 +34,34 @@ const TABS = [
 type TabId = typeof TABS[number]['id']
 
 const CITY_META: Record<string, { type: string; growth: string; challenge: string; badge: string }> = {
-  san_jose: { type: 'Bay Area metro', growth: '22% in 10 years', challenge: 'housing, transit, heat', badge: 'Preset' },
-  fremon: { type: 'Generated future suburb', growth: '35% in 10 years', challenge: 'emergency access, schools, transit, green space, housing growth', badge: 'Demo ready' },
-  fremont: { type: 'Bay Area suburb', growth: '30% in 10 years', challenge: 'transit, schools, clinics, housing growth', badge: 'Demo ready' },
-  sacramento: { type: 'Capital region', growth: '18% in 10 years', challenge: 'flood, heat, service access', badge: 'Preset' },
-  phoenix: { type: 'Desert growth city', growth: '26% in 10 years', challenge: 'heat, water, service access', badge: 'Preset' },
-  austin: { type: 'Fast-growth tech city', growth: '32% in 10 years', challenge: 'housing, congestion, emergency access', badge: 'Preset' },
+  san_jose: { type: 'Bay Area metro', growth: '22% in 10 years', challenge: 'heat, flood, smoke, transit gaps', badge: 'Preset' },
+  fremon: { type: 'Weather resilience demo', growth: '35% in 10 years', challenge: 'heat risk, emergency gaps, shelter, transit disruption', badge: 'Demo ready' },
+  fremont: { type: 'Bay Area suburb', growth: '30% in 10 years', challenge: 'heat exposure, transit resilience, emergency access', badge: 'Preset' },
+  sacramento: { type: 'Capital region', growth: '18% in 10 years', challenge: 'flood risk, heat, smoke corridors', badge: 'Preset' },
+  phoenix: { type: 'Desert growth city', growth: '26% in 10 years', challenge: 'extreme heat, water, cooling access', badge: 'Preset' },
+  austin: { type: 'Fast-growth tech city', growth: '32% in 10 years', challenge: 'heat, flood, emergency access', badge: 'Preset' },
 }
 
 const SCENARIO_DETAILS: Record<ScenarioId, { icon: React.ElementType; description: string; weights: string; impact: string }> = {
-  balanced: { icon: Scale, description: 'Balances access, growth, commute, and green space.', weights: 'All weights normal', impact: 'Stable baseline' },
-  transit_first: { icon: Train, description: 'Prioritizes transit stops, rail access, and commute reduction.', weights: 'Transit + commute', impact: 'Lower commute' },
-  climate_resilient: { icon: Leaf, description: 'Prioritizes parks, CO2, heat risk, and resilient green corridors.', weights: 'Green + CO2', impact: 'Lower emissions' },
-  equity_focused: { icon: Users, description: 'Prioritizes underserved zones, schools, emergency access, and transit.', weights: 'Equity + access', impact: 'Fairer access' },
-  emergency_ready: { icon: Flame, description: 'Prioritizes clinics, hospitals, police, fire, and response coverage.', weights: 'Emergency + response', impact: 'Faster response' },
-  max_growth: { icon: Home, description: 'Prioritizes housing capacity while tracking commute and congestion risk.', weights: 'Housing + access', impact: 'More capacity' },
+  balanced: { icon: Scale, description: 'All hazards active: heat, flood, smoke, storm, and emergency gaps analyzed together.', weights: 'All hazards', impact: 'Full resilience' },
+  emergency_ready: { icon: Flame, description: 'Highlights heat risk zones and cooling center gaps. Prioritizes emergency response coverage.', weights: 'Heat + cooling', impact: 'Cooling access' },
+  climate_resilient: { icon: Leaf, description: 'Highlights flood vulnerable zones. Prioritizes elevated shelters and flood-safe transit routes.', weights: 'Flood + shelter', impact: 'Flood resilience' },
+  equity_focused: { icon: CloudSun, description: 'Highlights smoke shelter gaps. Prioritizes indoor air-safe refuge centers.', weights: 'Smoke + shelter', impact: 'Smoke safety' },
+  transit_first: { icon: Train, description: 'Highlights storm-disrupted transit zones and evacuation route gaps.', weights: 'Storm + transit', impact: 'Storm resilience' },
+  max_growth: { icon: Home, description: 'Stress-tests all resilience infrastructure under maximum 35% growth with compound weather risk.', weights: 'All hazards + growth', impact: 'Stress test' },
 }
 
 const LAYER_ITEMS = [
-  { id: 'Existing hospitals', icon: Shield, label: 'Existing Clinics', color: '#E74C3C', group: 'Existing Infrastructure' },
-  { id: 'Existing schools', icon: GraduationCap, label: 'Existing Schools', color: '#2E86C1', group: 'Existing Infrastructure' },
-  { id: 'Existing parks', icon: Leaf, label: 'Existing Parks', color: '#27AE60', group: 'Existing Infrastructure' },
-  { id: 'Existing transit', icon: Train, label: 'Existing Transit', color: '#8E44AD', group: 'Existing Infrastructure' },
-  { id: 'Existing police stations', icon: Shield, label: 'Existing Police', color: '#5D4E75', group: 'Existing Infrastructure' },
-  { id: 'Existing fire stations', icon: Flame, label: 'Existing Fire', color: '#E74C3C', group: 'Existing Infrastructure' },
-  { id: 'Growth Pressure', icon: Users, label: 'Housing Growth', color: '#E67E22', group: 'Analysis Overlays' },
-  { id: 'Proposed infrastructure', icon: Crosshair, label: 'Proposed Infrastructure', color: '#00D4FF', group: 'Future Scenario' },
-  { id: 'AI Recommendations', icon: Sparkles, label: 'AI Recommendations', color: '#00D4FF', group: 'Future Scenario' },
-  { id: 'Underserved zones', icon: CloudSun, label: 'Underserved Zones', color: '#FF5A3D', group: 'Analysis Overlays' },
-  { id: 'Coverage Rings', icon: Crosshair, label: 'Coverage Rings', color: '#00B894', group: 'Analysis Overlays' },
+  { id: 'Existing hospitals', icon: Shield, label: 'Emergency Clinics', color: '#E74C3C', group: 'Existing Infrastructure' },
+  { id: 'Existing schools', icon: GraduationCap, label: 'Schools / Shelters', color: '#2E86C1', group: 'Existing Infrastructure' },
+  { id: 'Existing parks', icon: Leaf, label: 'Parks / Cooling Zones', color: '#27AE60', group: 'Existing Infrastructure' },
+  { id: 'Existing transit', icon: Train, label: 'Transit Stops', color: '#8E44AD', group: 'Existing Infrastructure' },
+  { id: 'Existing fire stations', icon: Flame, label: 'Fire / Response Stations', color: '#E74C3C', group: 'Existing Infrastructure' },
+  { id: 'Growth Pressure', icon: Users, label: 'Housing Growth Pressure', color: '#E67E22', group: 'Weather Risk Overlays' },
+  { id: 'Underserved zones', icon: CloudSun, label: 'Weather Risk Zones', color: '#FF5A3D', group: 'Weather Risk Overlays' },
+  { id: 'Proposed infrastructure', icon: Crosshair, label: 'Proposed Resilience Sites', color: '#00D4FF', group: 'Resilience Plan' },
+  { id: 'AI Recommendations', icon: Sparkles, label: 'AI Recommendations', color: '#00D4FF', group: 'Resilience Plan' },
+  { id: 'Coverage Rings', icon: Crosshair, label: 'Coverage Rings', color: '#00B894', group: 'Resilience Plan' },
 ] as const
 
 export function LeftSidebar() {
@@ -217,7 +216,7 @@ function PlannerPanel() {
         </div>
       </PanelSection>
 
-      <PanelSection title="Scenario">
+      <PanelSection title="Weather Scenario">
         <div className="grid gap-2">
           {(Object.keys(SCENARIO_DETAILS) as ScenarioId[]).map((id) => (
             <ScenarioCard key={id} id={id} active={activeScenario === id} onSelect={() => chooseScenario(id)} />
@@ -258,7 +257,7 @@ function PlannerPanel() {
 
       <PanelSection title="Layers">
         <div className="grid gap-3">
-          {['Existing Infrastructure', 'Future Scenario', 'Analysis Overlays'].map((group) => (
+          {['Existing Infrastructure', 'Weather Risk Overlays', 'Resilience Plan'].map((group) => (
             <div key={group}>
               <div className="mb-1.5 font-mono text-[9px] tracking-widest uppercase" style={{ color: 'var(--color-text-muted)' }}>{group}</div>
               <div className="grid gap-1.5">
@@ -280,7 +279,7 @@ function PlannerPanel() {
         <ZonePalette compact />
       </PanelSection>
 
-      <PanelSection title="2026 to 2036 Growth Timeline">
+      <PanelSection title="2026 to 2036 Exposure Timeline">
         <details>
           <summary className="cursor-pointer text-xs font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
             Expand timeline
@@ -423,9 +422,9 @@ function Chip({ color, children }: { color: string; children: React.ReactNode })
 function TrustCard() {
   return (
     <div className="rounded-xl p-3" style={{ border: '1px solid var(--color-border-subtle)', background: 'var(--color-bg-hover)' }}>
-      <div className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'var(--color-accent-cyan)' }}>Trust and Assumptions</div>
+      <div className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'var(--color-accent-cyan)' }}>Assumptions and Limitations</div>
       <p className="mt-2 text-[11px] leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-        UrbanMind estimates infrastructure needs using simulated growth data, visible service gaps, and scenario based scoring. It supports early stage planning comparison and does not replace formal zoning, environmental review, traffic engineering, or public approval.
+        WeatherReady AI estimates resilience gaps using simulated growth data, weather exposure zones, and scenario-based scoring. It supports early-stage climate readiness planning and does not replace formal hazard analysis, environmental review, or emergency management planning.
       </p>
     </div>
   )

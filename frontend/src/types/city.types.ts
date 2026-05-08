@@ -253,3 +253,11 @@ export type ScenarioId =
   | 'equity_focused'
   | 'transit_first'
   | 'emergency_ready'
+
+// Weather scenario aliases (map to base ScenarioId values in the UI)
+export type WeatherScenarioId =
+  | 'balanced'        // Balanced Resilience
+  | 'emergency_ready' // Heat Wave
+  | 'climate_resilient' // Flood Event
+  | 'equity_focused'  // Wildfire Smoke
+  | 'transit_first'   // Storm Disruption

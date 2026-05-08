@@ -53,11 +53,11 @@ export function LandingScreen({ onEnter }: Props) {
 
             <div className="mb-4"><CityIcon /></div>
 
-            <h1 className="font-display font-bold tracking-widest uppercase mb-1" style={{ fontSize: 32, color: 'var(--color-text-primary)', letterSpacing: '0.15em', lineHeight: 1.1, filter: 'drop-shadow(0 1px 0 #ffffff)' }}>
-              UrbanMind
+            <h1 className="font-display font-bold tracking-widest uppercase mb-1" style={{ fontSize: 26, color: 'var(--color-text-primary)', letterSpacing: '0.1em', lineHeight: 1.1, filter: 'drop-shadow(0 1px 0 #ffffff)' }}>
+              WeatherReady AI
             </h1>
-            <p className="font-mono text-[10px] tracking-widest uppercase mb-3" style={{ color: 'var(--color-text-muted)', letterSpacing: '0.25em' }}>
-              AI infrastructure planning simulator
+            <p className="font-mono text-[10px] tracking-widest uppercase mb-3" style={{ color: 'var(--color-text-muted)', letterSpacing: '0.2em' }}>
+              AI resilience planner for extreme weather
             </p>
 
             <div className="mb-4">
@@ -65,7 +65,7 @@ export function LandingScreen({ onEnter }: Props) {
             </div>
 
             <p style={{ color: 'var(--color-text-secondary)', fontSize: 12, lineHeight: 1.7 }} className="mb-6">
-              Analyze underserved districts, apply a targeted AI plan, and present measurable before/after impact.
+              Identify vulnerable districts, place emergency infrastructure, and prepare cities for heat waves, floods, smoke, and storms.
             </p>
 
             <TactileButton variant="secondary" onClick={() => setSandboxOpen(true)} icon={<Plus size={13} />}>
@@ -75,7 +75,7 @@ export function LandingScreen({ onEnter }: Props) {
             <div className="mt-4 flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: 'var(--color-accent-cyan)' }} />
               <span className="font-mono text-[9px]" style={{ color: 'var(--color-text-muted)', letterSpacing: '0.15em' }}>
-                {cities.length} CITY OPTIONS · FREMON DEMO READY
+                {cities.length} CITIES · FREMON RESILIENCE DEMO READY
               </span>
             </div>
           </motion.div>
@@ -149,7 +149,7 @@ function TactileButton({
 }
 
 function CityCard({ city, onSelect, compact = false }: { city: CityProfile; onSelect: (c: CityProfile) => void; compact?: boolean }) {
-  const typeLabel = city.id === 'fremon' ? 'Generated Future City' : 'Real City'
+  const typeLabel = city.id === 'fremon' ? 'Weather Resilience Demo' : 'Real City'
   const populationLabel = city.population_current.toLocaleString()
   return (
     <motion.button
@@ -193,7 +193,7 @@ function CityCard({ city, onSelect, compact = false }: { city: CityProfile; onSe
           {city.key_planning_challenge}
         </p>
         <div className="mt-3 inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 text-[10px] font-bold font-mono tracking-widest uppercase" style={{ color: 'var(--color-accent-cyan)', borderColor: 'var(--color-border-subtle)' }}>
-          SIMULATE →
+          ANALYZE RESILIENCE →
         </div>
       </div>
     </motion.button>
@@ -233,19 +233,14 @@ export function Logo({ large = false }: { large?: boolean }) {
       <span
         className="font-display font-bold tracking-widest uppercase"
         style={{
-          fontSize: large ? 32 : 15,
+          fontSize: large ? 26 : 13,
           color: 'var(--color-accent-cyan)',
-          letterSpacing: '0.12em',
+          letterSpacing: '0.08em',
           filter: 'drop-shadow(0 1px 0 #ffffff)',
         }}
       >
-        UrbanMind
+        WeatherReady AI
       </span>
-      {large && (
-        <span className="font-mono text-xs tracking-widest" style={{ color: 'var(--color-text-muted)', letterSpacing: '0.2em' }}>
-          AI
-        </span>
-      )}
     </div>
   )
 }

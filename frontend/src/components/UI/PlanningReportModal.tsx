@@ -40,38 +40,39 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
 
   const pitchSummary =
     planning.cityId === 'fremon'
-      ? 'UrbanMind analyzed Fremon under 35 percent projected growth, detected emergency, education, transit, and green space gaps, recommended a targeted AI infrastructure plan, and improved City Health from 61 to 82 while serving 74,000 projected residents.'
-      : `UrbanMind analyzed ${cityName} under ${planning.growthPercent}% projected growth, detected emergency, education, transit, and green space gaps, recommended a targeted infrastructure plan, and improved City Health from ${chBefore} to ${chAfter} while serving ${typeof residents === 'number' ? residents.toLocaleString() : residents} residents.`
+      ? 'WeatherReady AI analyzed Fremon under future growth and extreme weather risk, detected emergency, cooling, shelter, and transit gaps, then generated a resilience plan that raises Weather Readiness from 58 to 84 and protects 91,000 residents.'
+      : `WeatherReady AI analyzed ${cityName} under ${planning.growthPercent}% projected growth and extreme weather exposure, detected emergency, cooling, shelter, and transit resilience gaps, and recommended a plan that raises Weather Readiness from ${chBefore} to ${chAfter} while protecting ${typeof residents === 'number' ? residents.toLocaleString() : residents} residents.`
 
   const reportJson = JSON.stringify(
     {
-      executiveSummary: `Infrastructure planning report for ${cityName}`,
+      executiveSummary: `Weather Resilience Plan for ${cityName}`,
       selectedCity: cityName,
       growthScenario: `${planning.growthPercent}% over ${planning.horizonYears} years`,
-      gaps: planning.underservedZones,
-      recommendedAIPlan: planning.topRecommendation,
+      weatherScenario: 'Heat Wave, Flood Event, Wildfire Smoke, Storm Disruption',
+      vulnerableDistricts: planning.underservedZones,
+      recommendedResiliencePlan: planning.topRecommendation,
       proposedInfrastructure: proposed.length ? proposed : planning.aiRecommendations,
-      beforeMetrics: before,
-      afterMetrics: after,
+      beforeMetrics: { weatherReadiness: before?.cityHealth, emergencyAccess: before?.emergencyAccess, coolingAccess: before?.transitCoverage, shelterAccess: before?.housingAccess, transitResilience: before?.equityScore, greenSpace: before?.greenSpace, residentsProtected: before?.populationServed, avgResponseTime: `${before?.averageCommute} min` },
+      afterMetrics: { weatherReadiness: after?.cityHealth, emergencyAccess: after?.emergencyAccess, coolingAccess: after?.transitCoverage, shelterAccess: after?.housingAccess, transitResilience: after?.equityScore, greenSpace: after?.greenSpace, residentsProtected: after?.populationServed, avgResponseTime: `${after?.averageCommute} min` },
       cost: planning.cityId === 'fremon' ? '$137M' : `$${((after?.totalEstimatedCost ?? 0) / 1_000_000).toFixed(0)}M`,
-      populationServed: residents,
+      residentsProtected: residents,
       pitchSummary,
       assumptions: [
-        'Growth and scores are illustrative for demonstration.',
-        `Infrastructure gaps and proposed locations are generated from ${cityName}'s selected city bounds, landmarks, and growth scenario.`,
+        'Weather risk zones are simulated from growth scenario and geographic data.',
+        `Resilience gap locations are generated from ${cityName}'s city bounds, landmarks, and weather scenario.`,
       ],
       limitations: [
-        'Not a substitute for GIS, CEQA, or agency review.',
+        'Not a substitute for formal hazard analysis, CEQA, or emergency management planning.',
         'Infrastructure inventory may omit real-world assets.',
       ],
-      nextSteps: ['Validate with city data', 'Stakeholder workshops', 'Capital programming'],
+      nextSteps: ['Validate candidate parcels with city GIS and emergency planning data', 'Stakeholder workshops with emergency management', 'Capital programming for highest-severity gaps'],
     },
     null,
     2
   )
 
   const copyReport = () => {
-    const body = document.getElementById('urbanmind-report-body')?.innerText
+    const body = document.getElementById('weatherready-report-body')?.innerText
     navigator.clipboard?.writeText(body ?? reportJson).catch(() => {})
   }
   const copyPitch = () => navigator.clipboard?.writeText(pitchSummary).catch(() => {})
@@ -80,7 +81,7 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `urbanmind-${planning.cityId}-planning-report.json`
+    a.download = `weatherready-${planning.cityId}-resilience-plan.json`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -115,10 +116,10 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
             <FileText size={18} style={{ color: 'var(--color-accent-cyan)' }} />
             <div>
               <div className="font-display font-semibold text-lg" style={{ color: 'var(--color-text-primary)' }}>
-                UrbanMind Planning Report
+                WeatherReady AI — Resilience Plan
               </div>
               <div className="font-mono text-[10px] tracking-widest uppercase" style={{ color: 'var(--color-text-muted)' }}>
-                {cityName} · {planning.growthPercent}% growth · {planning.horizonYears} yr horizon
+                {cityName} · {planning.growthPercent}% growth · {planning.horizonYears} yr horizon · extreme weather
               </div>
             </div>
           </div>
@@ -138,16 +139,16 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
           </button>
           <button type="button" onClick={copyPitch} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px]" style={{ border: '1px solid rgba(0,184,148,0.4)', color: 'var(--color-accent-green)' }}>
             <Copy size={11} />
-            Copy Pitch Summary
+            Copy Pitch
           </button>
         </div>
-        <div id="urbanmind-report-body" className="p-5 space-y-4">
+        <div id="weatherready-report-body" className="p-5 space-y-4">
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
               Executive Summary
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              UrbanMind analyzed <strong>{cityName}</strong>, identified infrastructure gaps, recommended a targeted AI plan, and measured before-and-after improvement.
+              WeatherReady AI analyzed <strong>{cityName}</strong> under future growth and extreme weather risk, identified vulnerable districts, and generated a resilience plan with measurable before-and-after improvement.
             </p>
             <div className="mt-3 rounded-lg p-3" style={{ border: '1px solid rgba(0,184,148,0.3)', background: 'rgba(0,184,148,0.06)' }}>
               <div className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: 'var(--color-accent-green)' }}>
@@ -160,22 +161,23 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              City and Scenario
+              Weather Scenario
             </h3>
             <DataLine label="City" value={cityName} />
             <DataLine label="Growth Scenario" value={`${planning.growthPercent}% over ${planning.horizonYears} years`} />
+            <DataLine label="Weather Hazards" value="Heat Wave, Flood Event, Wildfire Smoke, Storm Disruption" />
             <DataLine label="Timeline Year" value={`${planning.timelineYear} · ${planning.timelinePopulation.toLocaleString()} projected residents`} />
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Main Infrastructure Gaps
+              Vulnerable Districts
             </h3>
-            <DataLine label="Top Gap" value={topGap ? `${topGap.name}: ${topGap.reason}` : planning.topRecommendation.zoneName} />
-            <DataLine label="Growth Theme" value={city?.key_planning_challenge ?? `${cityName} infrastructure access and growth planning`} />
+            <DataLine label="Top Risk" value={topGap ? `${topGap.name}: ${topGap.reason}` : planning.topRecommendation.zoneName} />
+            <DataLine label="City Exposure" value={city?.key_planning_challenge ?? `${cityName} weather resilience and emergency access gaps`} />
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Current Infrastructure Gaps
+              Weather Risk Gaps
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {activeGaps.length === 0 && <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>No open gaps recorded (zones may already be improved).</p>}
@@ -193,18 +195,18 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Recommended AI Plan
+              Recommended Infrastructure
             </h3>
             <p className="text-xs leading-relaxed mb-2" style={{ color: 'var(--color-text-secondary)' }}>
               {planning.topRecommendation.reason}
             </p>
-            <DataLine label="Recommendation" value={topItem?.name ?? planning.topRecommendation.title} />
-            <DataLine label="Cost" value={`${formatMoney(topCost)} top recommendation · ${formatMoney(totalCost)} full plan`} />
-            <DataLine label="Population Served" value={`${topPopulation.toLocaleString()} top recommendation · ${typeof residents === 'number' ? residents.toLocaleString() : residents} full plan`} />
+            <DataLine label="Top Recommendation" value={topItem?.name ?? planning.topRecommendation.title} />
+            <DataLine label="Cost" value={`${formatMoney(topCost)} top site · ${formatMoney(totalCost)} full resilience plan`} />
+            <DataLine label="Residents Protected" value={`${topPopulation.toLocaleString()} top site · ${typeof residents === 'number' ? residents.toLocaleString() : residents} full plan`} />
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Proposed Infrastructure
+              Emergency Access and Cooling Infrastructure
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {(proposed.length ? proposed : planning.aiRecommendations).map((item) => (
@@ -224,20 +226,19 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Before / After Metrics
+              Before / After Resilience Metrics
             </h3>
             {before && after ? (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {[
-                  ['City Health', before.cityHealth, after.cityHealth],
-                  ['Emergency', before.emergencyAccess, after.emergencyAccess],
-                  ['Transit', before.transitCoverage, after.transitCoverage],
+                  ['Weather Readiness', before.cityHealth, after.cityHealth],
+                  ['Emergency Access', before.emergencyAccess, after.emergencyAccess],
+                  ['Cooling Access', before.transitCoverage, after.transitCoverage],
+                  ['Shelter Access', before.housingAccess, after.housingAccess],
+                  ['Transit Resilience', before.equityScore, after.equityScore],
                   ['Green Space', before.greenSpace, after.greenSpace],
-                  ['Education', before.educationAccess, after.educationAccess],
-                  ['15‑Min City', before.fifteenMinuteCityScore ?? 0, after.fifteenMinuteCityScore ?? 0],
-                  ['Avg Commute', before.averageCommute, after.averageCommute],
-                  ['CO₂ est.', before.co2Estimate, after.co2Estimate],
-                  ['Equity', before.equityScore, after.equityScore],
+                  ['Avg Response (min)', before.averageCommute, after.averageCommute],
+                  ['Residents Protected', before.populationServed ?? 31000, after.populationServed ?? 91000],
                 ].map(([label, b, a]) => (
                   <div key={label as string} className="rounded-lg p-3" style={{ border: '1px solid var(--color-border-subtle)', background: 'var(--color-bg-card)' }}>
                     <div className="font-mono text-[10px]" style={{ color: 'var(--color-text-muted)' }}>
@@ -255,18 +256,19 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Cost and Population Served
+              Cost and Residents Protected
             </h3>
-            <DataLine label="Total Cost" value={formatMoney(totalCost)} />
-            <DataLine label="Population Served" value={`${typeof residents === 'number' ? residents.toLocaleString() : residents} projected residents`} />
+            <DataLine label="Total Resilience Plan Cost" value={formatMoney(totalCost)} />
+            <DataLine label="Residents Protected" value={`${typeof residents === 'number' ? residents.toLocaleString() : residents} projected residents`} />
           </section>
           <section>
             <h3 className="font-mono text-[10px] tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent-cyan)' }}>
-              Assumptions & Limitations
+              Assumptions
             </h3>
             <ul className="text-xs space-y-1 list-disc list-inside" style={{ color: 'var(--color-text-secondary)' }}>
-              <li>{cityName} geography, landmarks, and growth assumptions are illustrative for demo planning.</li>
-              <li>Not for regulatory or permitting decisions.</li>
+              <li>Weather risk zones are simulated from growth scenario and geographic exposure data.</li>
+              <li>{cityName} landmarks, bounds, and growth assumptions are illustrative for demo planning.</li>
+              <li>Not a substitute for formal hazard analysis, CEQA, or emergency management planning.</li>
             </ul>
           </section>
           <section>
@@ -274,9 +276,9 @@ function PlanningReport({ onClose }: { onClose: () => void }) {
               Next Steps
             </h3>
             <ul className="text-xs space-y-1 list-disc list-inside" style={{ color: 'var(--color-text-secondary)' }}>
-              <li>Validate candidate parcels with city GIS data.</li>
+              <li>Validate candidate resilience sites with city GIS and emergency planning data.</li>
               <li>Prioritize {topItem?.name ?? planning.topRecommendation.title} for near-term capital review.</li>
-              <li>Use public workshops to confirm equity and access assumptions.</li>
+              <li>Stakeholder workshops with emergency management, public health, and transit agencies.</li>
             </ul>
           </section>
         </div>

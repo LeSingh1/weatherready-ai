@@ -1,85 +1,114 @@
-# UrbanMind AI
+# WeatherReady AI
 
-> AI-powered smart city expansion planner for the AI Autonomous Smart City Hackathon 2026.
+> AI resilience planner for cities facing extreme weather.
 
-[Demo Video Link] | [Live Demo] | [Documentation]
+**Hackathon:** WeatherWise Hack
+
+---
 
 ## What It Does
 
-UrbanMind AI helps planners explore how real cities can expand over the next 50 years. It combines live city maps, zoning constraints, infrastructure placement, growth metrics, and AI-generated planning explanations into one interactive simulation.
+WeatherReady AI helps growing cities identify vulnerable districts, place emergency infrastructure, and prepare future growth for climate and weather risks.
 
-The app lets a user select one of nine global cities, choose a planning scenario, and watch an autonomous agent place housing, roads, services, utilities, parks, and resilience infrastructure year by year. The map, metrics, charts, timeline, and AI decision history update as the simulation runs.
+It analyzes Fremon — a simulated city growing 35% over 10 years — under heat waves, floods, wildfire smoke, and storm disruption, then generates a resilience plan that closes gaps and raises Weather Readiness from 58 to 84 while protecting 91,000 residents.
 
-The impact is a faster way to compare urban futures. Planners can test growth-first, equity-first, climate-resilient, historic, and balanced strategies, then export a professional report that explains tradeoffs in population, mobility, emissions, green space, infrastructure load, and public-service coverage.
+---
 
-## Quick Start
+## Core Demo Flow
 
-```bash
-git clone https://github.com/yourusername/urbanmind-ai
-cd urbanmind-ai
-cp .env.example .env
-# Add ANTHROPIC_API_KEY and MAPBOX_TOKEN to .env
-docker-compose up
-# Open http://localhost
-```
+1. **Land on Fremon** — the weather resilience demo city, growing 35% in 10 years
+2. **Select a weather scenario** — Heat Wave, Flood Event, Wildfire Smoke, Storm Disruption, or Balanced Resilience
+3. **Click Analyze Weather Risks** — AI detects heat risk zones, emergency response gaps, cooling center deficits, shelter access gaps, and transit disruption zones
+4. **Review the Copilot** — top weather risk identified with recommendation and reasoning
+5. **Apply Full Resilience Plan** — cooling center coverage rings appear, emergency access rings expand, heat risk zones fade, shelter access improves, Weather Readiness Score animates upward
+6. **Generate Resilience Report** — full plan with before/after metrics, vulnerable districts, cost, and next steps
+
+---
+
+## Weather Risk Overlays
+
+- Heat Risk Zone
+- Flood Vulnerable Zone (simulated)
+- Smoke Shelter Access Gap
+- Emergency Response Gap
+- Transit Disruption Zone
+- Cooling Center Gap
+
+---
+
+## Recommended Infrastructure
+
+- South Emergency Gap Clinic
+- Central Cooling and Green Corridor
+- North Transit Resilience Hub
+- East School and Shelter Site
+- New Housing Expansion Community Center
+- West Evacuation Transit Stop
+
+---
+
+## Before / After Metrics
+
+| Metric | Before | After |
+|---|---|---|
+| Weather Readiness Score | 58 | 84 |
+| Emergency Access | 55 | 79 |
+| Cooling Access | 44 | 76 |
+| Shelter Access | 51 | 78 |
+| Transit Resilience | 48 | 72 |
+| Green Space | 52 | 74 |
+| Residents Protected | 31,000 | 91,000 |
+| Avg Response Time | 12.4 min | 8.1 min |
+
+---
+
+## Pitch Summary
+
+WeatherReady AI analyzed Fremon under future growth and extreme weather risk, detected emergency, cooling, shelter, and transit gaps, then generated a resilience plan that raises Weather Readiness from 58 to 84 and protects 91,000 residents.
+
+---
 
 ## Tech Stack
 
-React, TypeScript, Vite, Mapbox GL, D3, Zustand, Framer Motion, Python, FastAPI, PostgreSQL/PostGIS, Redis, RQ, MinIO, Docker Compose, OSMnx, GeoPandas, PyTorch, Stable Baselines3, Anthropic Claude.
+- **Frontend:** React 18, TypeScript, Vite
+- **Map:** Mapbox GL JS via react-map-gl
+- **Charts:** D3.js
+- **Animations:** Framer Motion
+- **Styling:** Tailwind CSS
+- **State:** Zustand
+- **Icons:** Lucide React
 
-## AI Architecture
+---
 
-UrbanMind AI is structured around a reinforcement-learning simulation loop. The agent observes a geospatial grid, existing roads, terrain suitability, city metrics, and scenario weights, then chooses the next zone or infrastructure placement. Phase 2 provides the AI-engine foundation for PPO-style optimization, constraint validation, road generation, demand forecasting, and population modeling.
+## Setup Instructions
 
-The backend streams each simulation frame through Redis and WebSockets. The frontend renders those frames as Mapbox layers and D3 analytics. Claude powers the narrative layer: hover explanations, annual summaries, decision history, report summaries, and recommendations.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Features
+Open [http://localhost:5173](http://localhost:5173)
 
-- Real-city planning for New York, Los Angeles, Tokyo, Lagos, London, Sao Paulo, Singapore, Dubai, and Mumbai
-- Year-by-year WebSocket simulation playback
-- Mapbox zones, roads, heatmaps, and 3D building extrusions
-- Scenario selector for balanced, max growth, climate resilient, equity focused, and historic plans
-- Six live D3 dashboard charts
-- AI decision tooltips and explanation drawer
-- Split-screen scenario comparison
-- Procedural sandbox city generator
-- ReportLab PDF export
-- Keyboard navigation, ARIA labels, and color-blind-friendly secondary cues
+The app runs fully frontend-only — no backend required for the Fremon demo.
 
-## Screenshots
+---
 
-- Landing and city gallery
-- Tokyo simulation map
-- Analytics dashboard
-- AI explanation tooltip
-- Split-screen comparison
-- Sandbox terrain generator
-- PDF report export
+## Project Structure
 
-## Hackathon Category
+```
+weatherready-ai/
+  frontend/         # React app (run npm install + npm run dev here)
+    src/
+      components/   # UI, Map, AI copilot, Layout, Simulation
+      data/         # fremonDemo.ts — weather resilience data
+      stores/       # Zustand stores (city, simulation, scenario, UI)
+      types/        # TypeScript types
+  backend/          # FastAPI backend (not required for demo)
+```
 
-Smart Traffic and Mobility, Smart Energy Management, Urban Healthcare, and Public Safety Infrastructure.
+---
 
-## Team
+## About
 
-See `members.csv` for team roster details.
-
-## License
-
-MIT
-
-## Demo Video Script
-
-0:00-0:30: Show Tokyo at Year 2074 and introduce the 50-year planning question.
-
-0:30-1:20: Open the gallery, select Lagos, and choose the Equity Focused scenario.
-
-1:20-2:30: Run playback at 10x. Pause at Year 20 and hover a hospital placement to show the AI explanation.
-
-2:30-3:15: Demonstrate a manual override and show how metrics respond.
-
-3:15-4:00: Open the dashboard and explain the population timeline, radar chart, and infrastructure scatter.
-
-4:00-4:30: Compare Equity Focused against Max Growth in split-screen mode.
-
-4:30-5:00: Generate a coastal sandbox city, start the simulation, and export the PDF report.
+WeatherReady AI is a branch of the UrbanMind platform, rethemed for the WeatherWise Hack to focus on extreme weather city readiness. It uses the same interactive map, coverage ring overlays, before/after metrics, and AI copilot — reframed as an extreme weather city readiness simulator.

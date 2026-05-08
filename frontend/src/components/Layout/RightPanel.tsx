@@ -26,10 +26,10 @@ export function RightPanel() {
         {!planning.hasAnalyzed ? (
           <section className="rounded-lg p-4" style={{ background: 'var(--color-bg-hover)', border: '1px solid var(--color-border-subtle)' }}>
             <h2 className="font-display text-lg font-semibold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
-              Ready to analyze infrastructure gaps
+              Ready to analyze weather risks
             </h2>
             <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              Run analysis to identify underserved zones and recommended fixes.
+              Identify heat, flood, smoke, and emergency gaps across the selected city.
             </p>
             <button
               type="button"
@@ -38,7 +38,7 @@ export function RightPanel() {
               style={{ background: 'var(--color-bg-panel)', color: 'var(--color-accent-cyan)', border: '1px solid rgba(255,71,87,0.35)', boxShadow: 'var(--shadow-sm)' }}
             >
               <Search size={16} />
-              Analyze Infrastructure Gaps
+              Analyze Weather Risks
             </button>
           </section>
         ) : (
@@ -57,12 +57,12 @@ export function RightPanel() {
                 </p>
                 <div className="mt-3 grid grid-cols-2 gap-2">
                   <Impact label="Emergency Access" value={metricRange(before?.emergencyAccess, afterPreview.emergencyAccess)} />
-                  <Impact label="City Health" value={metricRange(before?.cityHealth, afterPreview.cityHealth)} />
-                  <Impact label="Equity Score" value={metricRange(before?.equityScore, afterPreview.equityScore)} />
-                  <Impact label="Commute" value={`${before?.averageCommute ?? '—'} to ${afterPreview.averageCommute} min`} />
+                  <Impact label="Weather Readiness" value={metricRange(before?.cityHealth, afterPreview.cityHealth)} />
+                  <Impact label="Transit Resilience" value={metricRange(before?.equityScore, afterPreview.equityScore)} />
+                  <Impact label="Avg Response Time" value={`${before?.averageCommute ?? '—'} to ${afterPreview.averageCommute} min`} />
                   <Impact label="Cost" value={formatMoney(topItem?.costEstimate ?? topRecommendation.costEstimate ?? topRecommendation.estimatedCost)} />
                   <Impact label="Confidence" value={`${Math.round((topItem?.confidence ?? topRecommendation.confidence ?? 0.82) * 100)}%`} />
-                  <Impact label="Population Served" value={populationServed.toLocaleString()} />
+                  <Impact label="Residents Protected" value={populationServed.toLocaleString()} />
                 </div>
                 <div className="mt-4 grid gap-2">
                   <button
@@ -79,7 +79,7 @@ export function RightPanel() {
                     className="rounded-lg px-3 py-3 text-sm font-semibold"
                     style={{ background: 'var(--color-bg-panel)', color: 'var(--color-accent-cyan)', border: '1px solid rgba(255,71,87,0.35)' }}
                   >
-                    Apply Full AI Plan
+                    Apply Full Resilience Plan
                   </button>
                 </div>
               </>
@@ -95,7 +95,7 @@ export function RightPanel() {
                   style={{ background: 'var(--color-bg-panel)', color: 'var(--color-accent-purple)', border: '1px solid var(--color-border-subtle)' }}
                 >
                   <FileText size={16} />
-                  Generate Report
+                  Resilience Report
                 </button>
               </>
             )}
@@ -104,7 +104,7 @@ export function RightPanel() {
 
         {planning.hasAppliedAIPlan && (
           <section className="rounded-lg p-4" style={{ background: 'rgba(0,184,148,0.08)', border: '1px solid rgba(0,184,148,0.32)' }}>
-            <div className="font-display text-base font-semibold" style={{ color: 'var(--color-accent-green)' }}>Impact Summary</div>
+            <div className="font-display text-base font-semibold" style={{ color: 'var(--color-accent-green)' }}>Resilience Impact</div>
             <ImpactSummary />
           </section>
         )}
@@ -129,20 +129,20 @@ export function RightPanel() {
               Detailed Metrics
             </summary>
             <div className="mt-2 grid gap-2">
-              <Metric label="City Health" before={planning.beforeScores.cityHealth} after={planning.afterScores?.cityHealth} />
+              <Metric label="Weather Readiness" before={planning.beforeScores.cityHealth} after={planning.afterScores?.cityHealth} />
               <Metric label="Emergency Access" before={planning.beforeScores.emergencyAccess} after={planning.afterScores?.emergencyAccess} />
-              <Metric label="Transit Coverage" before={planning.beforeScores.transitCoverage} after={planning.afterScores?.transitCoverage} />
+              <Metric label="Cooling Access" before={planning.beforeScores.transitCoverage} after={planning.afterScores?.transitCoverage} />
+              <Metric label="Shelter Access" before={planning.beforeScores.housingAccess} after={planning.afterScores?.housingAccess} />
               <Metric label="Green Space" before={planning.beforeScores.greenSpace} after={planning.afterScores?.greenSpace} />
-              <Metric label="Equity Score" before={planning.beforeScores.equityScore} after={planning.afterScores?.equityScore} />
-              <Metric label="15 Minute City" before={planning.beforeScores.fifteenMinuteCityScore ?? 54} after={planning.afterScores?.fifteenMinuteCityScore} />
-              <Metric label="Average Commute" before={planning.beforeScores.averageCommute} after={planning.afterScores?.averageCommute} inverse />
+              <Metric label="Transit Resilience" before={planning.beforeScores.equityScore} after={planning.afterScores?.equityScore} />
+              <Metric label="Avg Response Time (min)" before={planning.beforeScores.averageCommute} after={planning.afterScores?.averageCommute} inverse />
             </div>
           </details>
         )}
 
         <details>
           <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
-            Current Gaps
+            Weather Risk Gaps
           </summary>
           {planning.hasAnalyzed ? (
             <div className="mt-2 grid gap-2">
@@ -150,7 +150,7 @@ export function RightPanel() {
                 <div key={gap.id} className="rounded-lg p-3" style={{ background: gap.isImproved ? 'rgba(0,184,148,0.08)' : 'rgba(225,112,85,0.08)', border: gap.isImproved ? '1px solid rgba(0,184,148,0.25)' : '1px solid rgba(225,112,85,0.25)' }}>
                   <div className="flex justify-between gap-2">
                     <span className="text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>{gap.name}</span>
-                    <span className="font-mono text-[10px]" style={{ color: gap.isImproved ? 'var(--color-accent-green)' : 'var(--color-accent-danger)' }}>{gap.isImproved ? 'Improved' : 'Gap'}</span>
+                    <span className="font-mono text-[10px]" style={{ color: gap.isImproved ? 'var(--color-accent-green)' : 'var(--color-accent-danger)' }}>{gap.isImproved ? 'Resolved' : 'Risk'}</span>
                   </div>
                   <p className="mt-1 text-xs leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{gap.reason}</p>
                 </div>
@@ -179,12 +179,12 @@ function ImpactSummary() {
   const cost = summary?.budgetUsed ?? after?.totalEstimatedCost ?? planning.infrastructure.filter((item) => item.status === 'proposed').reduce((sum, item) => sum + item.costEstimate, 0)
   return (
     <div className="mt-3 grid grid-cols-2 gap-2">
-      <Impact label="Residents Served" value={residents.toLocaleString()} />
-      <Impact label="Gaps Improved" value={String(gaps)} />
-      <Impact label="City Health" value={formatDelta(cityHealth)} />
-      <Impact label="Emergency" value={formatDelta(emergency)} />
-      <Impact label="Equity Score" value={formatDelta(equity)} />
-      <Impact label="15 Min City" value={formatDelta(fifteen)} />
+      <Impact label="Residents Protected" value={residents.toLocaleString()} />
+      <Impact label="Gaps Closed" value={String(gaps)} />
+      <Impact label="Weather Readiness" value={formatDelta(cityHealth)} />
+      <Impact label="Emergency Access" value={formatDelta(emergency)} />
+      <Impact label="Transit Resilience" value={formatDelta(equity)} />
+      <Impact label="Cooling Access" value={formatDelta(fifteen)} />
       <Impact label="Total Cost" value={formatMoney(cost)} />
     </div>
   )

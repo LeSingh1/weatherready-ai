@@ -2,17 +2,17 @@ import type { CityProfile, Landmark } from '@/types/city.types'
 
 export const STATIC_CITIES: CityProfile[] = [
   city('fremon', 'Fremon', 'Generated City', 37.5485, -121.9886, 12, 'Simulated future suburb', 420000, 88000, 3.5,
-    'Fremon is a generated future suburb built for infrastructure gap analysis, plan comparison, budget optimization, and timeline simulation.',
-    'Generated grid, growth pressure, district service gaps, and clean demo-safe seeded infrastructure',
+    'Fremon is growing 35 percent over 10 years and faces heat wave risk, emergency access gaps, transit disruption risk, green space shortage, shelter access gaps, and new housing pressure.',
+    'Heat risk zones, flood vulnerable areas, smoke shelter gaps, emergency response gaps, and transit disruption zones',
     [-122.09, 37.45, -121.86, 37.62],
     [
-      { name: 'North Transit Gap', lat: 37.586, lng: -121.990, zone_type_id: 'BUS_STATION', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
-      { name: 'East Education District', lat: 37.548, lng: -121.936, zone_type_id: 'EDU_HIGH', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
-      { name: 'South Emergency Gap', lat: 37.500, lng: -121.990, zone_type_id: 'HEALTH_CLINIC', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
-      { name: 'Central Green Space Gap', lat: 37.552, lng: -121.990, zone_type_id: 'PARK_SMALL', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
-      { name: 'West Congestion Zone', lat: 37.548, lng: -122.038, zone_type_id: 'BUS_STATION', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
-      { name: 'Innovation District', lat: 37.565, lng: -121.956, zone_type_id: 'COM_OFFICE_PLAZA', category: 'District', data_source: 'projected', w_deg: 0.016, h_deg: 0.011 },
-      { name: 'New Housing Expansion Zone', lat: 37.512, lng: -121.945, zone_type_id: 'RES_MIXED_USE', category: 'District', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'North Transit Disruption Zone', lat: 37.586, lng: -121.990, zone_type_id: 'BUS_STATION', category: 'Weather Risk', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'East Flood Vulnerable Zone', lat: 37.548, lng: -121.936, zone_type_id: 'EDU_HIGH', category: 'Weather Risk', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'South Emergency Gap', lat: 37.500, lng: -121.990, zone_type_id: 'HEALTH_CLINIC', category: 'Emergency Gap', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'Cooling Center Gap', lat: 37.552, lng: -121.990, zone_type_id: 'PARK_SMALL', category: 'Heat Risk', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'Smoke Shelter Access Gap', lat: 37.548, lng: -122.038, zone_type_id: 'BUS_STATION', category: 'Smoke Risk', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
+      { name: 'Innovation District', lat: 37.565, lng: -121.956, zone_type_id: 'COM_OFFICE_PLAZA', category: 'Heat Exposure', data_source: 'projected', w_deg: 0.016, h_deg: 0.011 },
+      { name: 'New Housing Expansion Zone', lat: 37.512, lng: -121.945, zone_type_id: 'RES_MIXED_USE', category: 'Growth Pressure', data_source: 'projected', w_deg: 0.018, h_deg: 0.012 },
     ]
   ),
   city('fremont', 'Fremont, CA', 'United States', 37.5485, -121.9886, 12, 'Mediterranean', 230000, 92000, 1.1,

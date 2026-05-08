@@ -17,7 +17,7 @@ export function TopBar({ onHome }: { onHome: () => void }) {
       return
     }
     analyzeDemo(selectedCity.id, activeScenario)
-    notify('success', 'Infrastructure gaps detected for the selected city.', 2400)
+    notify('success', 'Weather risk gaps detected for the selected city.', 2400)
   }
 
   return (
@@ -41,7 +41,7 @@ export function TopBar({ onHome }: { onHome: () => void }) {
         </button>
         <div className="hidden sm:block min-w-0">
           <div className="font-display text-sm font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-            UrbanMind
+            WeatherReady AI
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export function TopBar({ onHome }: { onHome: () => void }) {
         }}
       >
         <Search size={15} />
-        {planning.hasAnalyzed ? 'Reanalyze' : 'Analyze Infrastructure Gaps'}
+        {planning.hasAnalyzed ? 'Re-Analyze' : 'Analyze Weather Risks'}
       </button>
 
       <button
@@ -96,7 +96,7 @@ export function TopBar({ onHome }: { onHome: () => void }) {
         }}
       >
         <FileText size={15} />
-        Generate Report
+        Resilience Report
       </button>
     </header>
   )

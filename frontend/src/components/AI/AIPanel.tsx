@@ -17,10 +17,10 @@ export function AIPanel() {
       <div className="p-3">
         <div className="rounded-lg p-4" style={{ background: 'var(--color-bg-hover)', border: '1px solid var(--color-border-subtle)' }}>
           <div className="font-display text-base font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-            Ready to analyze infrastructure gaps
+            Ready to analyze weather risks
           </div>
           <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-            Run analysis to identify underserved zones and recommended fixes.
+            Detect heat, flood, smoke, and emergency response gaps under 35% growth.
           </p>
           <button
             type="button"
@@ -29,7 +29,7 @@ export function AIPanel() {
             style={{ background: 'var(--color-bg-panel)', color: 'var(--color-accent-cyan)', border: '1px solid rgba(255,71,87,0.35)' }}
           >
             <Search size={15} />
-            Analyze Infrastructure Gaps
+            Analyze Weather Risks
           </button>
         </div>
       </div>
@@ -42,15 +42,15 @@ export function AIPanel() {
         <div className="rounded-lg p-4" style={{ background: 'rgba(0,184,148,0.08)', border: '1px solid rgba(0,184,148,0.32)' }}>
           <div className="flex items-center gap-2 font-display text-base font-semibold" style={{ color: 'var(--color-accent-green)' }}>
             <Sparkles size={17} />
-            AI Plan Applied
+            Resilience Plan Applied
           </div>
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <Impact label="Residents Served" value={(planning.impactSummary?.residentsServed ?? planning.afterScores?.populationServed ?? 0).toLocaleString()} />
-            <Impact label="Gaps Improved" value={String(planning.impactSummary?.gapsFixed ?? planning.underservedZones.filter((zone) => zone.isImproved).length)} />
-            <Impact label="City Health" value={formatDelta(planning.impactSummary?.cityHealthDelta ?? delta(planning.afterScores?.cityHealth, planning.beforeScores?.cityHealth))} />
-            <Impact label="Emergency" value={formatDelta(planning.impactSummary?.emergencyDelta ?? delta(planning.afterScores?.emergencyAccess, planning.beforeScores?.emergencyAccess))} />
-            <Impact label="Equity" value={formatDelta(planning.impactSummary?.equityDelta ?? delta(planning.afterScores?.equityScore, planning.beforeScores?.equityScore))} />
-            <Impact label="15 Min City" value={formatDelta(planning.impactSummary?.fifteenMinuteDelta ?? delta(planning.afterScores?.fifteenMinuteCityScore, planning.beforeScores?.fifteenMinuteCityScore))} />
+            <Impact label="Residents Protected" value={(planning.impactSummary?.residentsServed ?? planning.afterScores?.populationServed ?? 0).toLocaleString()} />
+            <Impact label="Gaps Closed" value={String(planning.impactSummary?.gapsFixed ?? planning.underservedZones.filter((zone) => zone.isImproved).length)} />
+            <Impact label="Weather Readiness" value={formatDelta(planning.impactSummary?.cityHealthDelta ?? delta(planning.afterScores?.cityHealth, planning.beforeScores?.cityHealth))} />
+            <Impact label="Emergency Access" value={formatDelta(planning.impactSummary?.emergencyDelta ?? delta(planning.afterScores?.emergencyAccess, planning.beforeScores?.emergencyAccess))} />
+            <Impact label="Transit Resilience" value={formatDelta(planning.impactSummary?.equityDelta ?? delta(planning.afterScores?.equityScore, planning.beforeScores?.equityScore))} />
+            <Impact label="Cooling Access" value={formatDelta(planning.impactSummary?.fifteenMinuteDelta ?? delta(planning.afterScores?.fifteenMinuteCityScore, planning.beforeScores?.fifteenMinuteCityScore))} />
           </div>
           <button
             type="button"
@@ -70,25 +70,25 @@ export function AIPanel() {
     <div className="p-3">
       <div className="rounded-lg p-4" style={{ background: 'var(--color-bg-hover)', border: '1px solid rgba(255,71,87,0.32)', boxShadow: 'var(--shadow-sm)' }}>
         <div className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'var(--color-accent-cyan)' }}>
-          Top Problem
+          Top Weather Risk
         </div>
         <div className="mt-1 font-display text-base font-semibold" style={{ color: 'var(--color-text-primary)' }}>
           {topRecommendation.zoneName}
         </div>
         <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-          Recommendation: Add {topItem?.name ?? topRecommendation.title.replace(/^Add\s+/i, '')}.
+          <strong>Recommendation:</strong> {topRecommendation.title}.
         </p>
         <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-          {topRecommendation.reason}
+          <strong>Why:</strong> {topRecommendation.reason}
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <Impact label="Emergency Access" value={metricRange(before?.emergencyAccess, afterPreview.emergencyAccess)} />
-          <Impact label="City Health" value={metricRange(before?.cityHealth, afterPreview.cityHealth)} />
-          <Impact label="Equity Score" value={metricRange(before?.equityScore, afterPreview.equityScore)} />
-          <Impact label="Commute" value={`${before?.averageCommute ?? '—'} to ${afterPreview.averageCommute} min`} />
+          <Impact label="Weather Readiness" value={metricRange(before?.cityHealth, afterPreview.cityHealth)} />
+          <Impact label="Transit Resilience" value={metricRange(before?.equityScore, afterPreview.equityScore)} />
+          <Impact label="Avg Response Time" value={`${before?.averageCommute ?? '—'} to ${afterPreview.averageCommute} min`} />
           <Impact label="Cost" value={formatMoney(topItem?.costEstimate ?? topRecommendation.costEstimate ?? topRecommendation.estimatedCost)} />
           <Impact label="Confidence" value={`${Math.round((topItem?.confidence ?? topRecommendation.confidence ?? 0.82) * 100)}%`} />
-          <Impact label="Population Served" value={(topRecommendation.expectedImpact.populationServed ?? Math.round((selectedCity?.population_current ?? planning.timelinePopulation) * 0.018)).toLocaleString()} />
+          <Impact label="Residents Protected" value={(topRecommendation.expectedImpact.populationServed ?? Math.round((selectedCity?.population_current ?? planning.timelinePopulation) * 0.018)).toLocaleString()} />
         </div>
         <div className="mt-4 grid gap-2">
           <button
@@ -105,7 +105,7 @@ export function AIPanel() {
             className="rounded-lg px-3 py-2.5 text-sm font-semibold"
             style={{ background: 'var(--color-bg-panel)', color: 'var(--color-accent-cyan)', border: '1px solid rgba(255,71,87,0.35)' }}
           >
-            Apply Full AI Plan
+            Apply Full Resilience Plan
           </button>
         </div>
       </div>
