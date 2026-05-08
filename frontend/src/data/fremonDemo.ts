@@ -107,50 +107,50 @@ export const FREMON_EQUITY_FIRST_METRICS: PlanningScores = {
 }
 
 export const FREMON_EXISTING_INFRASTRUCTURE: InfrastructureItem[] = [
-  point('fremon-central-clinic', 'Fremon Civic Clinic', 'clinic', [-122.010, 37.541], 'Existing clinic is central but leaves south heat and emergency risk zones uncovered.', 0, 70, 0.82),
-  point('fremon-north-bus-hub', 'North Loop Bus Hub', 'transit_stop', [-121.998, 37.594], 'Low-frequency transit anchor. Vulnerable to storm and smoke disruption without redundancy.', 0, 64, 0.78),
-  point('fremon-east-school', 'Eastside Learning Center', 'school', [-121.928, 37.546], 'Existing education capacity east of downtown, also functions as a community shelter but below demand.', 0, 66, 0.8),
-  point('fremon-central-park', 'Civic Commons Park', 'park', [-121.982, 37.560], 'Central open-space anchor, too small to provide cooling refuge for 35% projected growth.', 0, 62, 0.77),
-  point('fremon-fire-west', 'West Response Station', 'fire_station', [-122.046, 37.552], 'Fire and emergency response station, over-extended during extreme weather events.', 0, 72, 0.84),
-  point('fremon-police-core', 'Fremon Safety Center', 'police_station', [-121.979, 37.538], 'Public safety office near the civic core.', 0, 74, 0.86),
-  point('fremon-innovation', 'Innovation District', 'commercial_zone', [-121.950, 37.572], 'Employment growth district with daytime population heat exposure pressure.', 0, 68, 0.82),
-  point('fremon-housing-expansion', 'New Housing Expansion Zone', 'housing_zone', [-121.940, 37.506], 'Projected housing growth needs cooling centers, shelters, clinics, and emergency access.', 0, 65, 0.84),
+  point('fremon-central-clinic', 'Fremon Civic Clinic', 'clinic', [-121.988, 37.542], 'Existing clinic is central but leaves south heat and emergency risk zones uncovered.', 0, 70, 0.82),
+  point('fremon-north-bus-hub', 'North Loop Bus Hub', 'transit_stop', [-122.018, 37.572], 'Low-frequency transit anchor. Vulnerable to storm and smoke disruption without redundancy.', 0, 64, 0.78),
+  point('fremon-east-school', 'Eastside Learning Center', 'school', [-121.938, 37.540], 'Existing education capacity east of downtown, also functions as a community shelter but below demand.', 0, 66, 0.8),
+  point('fremon-central-park', 'Civic Commons Park', 'park', [-121.965, 37.548], 'Central open-space anchor, too small to provide cooling refuge for 35% projected growth.', 0, 62, 0.77),
+  point('fremon-fire-west', 'West Response Station', 'fire_station', [-122.024, 37.548], 'Fire and emergency response station, over-extended during extreme weather events.', 0, 72, 0.84),
+  point('fremon-police-core', 'Fremon Safety Center', 'police_station', [-121.983, 37.552], 'Public safety office near the civic core.', 0, 74, 0.86),
+  point('fremon-innovation', 'Innovation District', 'commercial_zone', [-121.946, 37.565], 'Employment growth district with daytime population heat exposure pressure.', 0, 68, 0.82),
+  point('fremon-housing-expansion', 'New Housing Expansion Zone', 'housing_zone', [-121.946, 37.510], 'Projected housing growth needs cooling centers, shelters, clinics, and emergency access.', 0, 65, 0.84),
 ]
 
 export const FREMON_AI_RECOMMENDATIONS: InfrastructureItem[] = [
-  point('fremon-ai-south-clinic', 'South Emergency Gap Clinic', 'clinic', [-121.995, 37.493], 'Closes the largest emergency and heat response gap for South Fremon growth households.', 18_000_000, 92, 0.87, 'ai_recommended'),
-  point('fremon-ai-east-school', 'East School and Shelter Site', 'school', [-121.918, 37.550], 'Adds classroom capacity and dual-use emergency shelter near East Fremon residential growth.', 32_000_000, 88, 0.85, 'ai_recommended'),
-  point('fremon-ai-north-transit', 'North Transit Resilience Hub', 'transit_stop', [-121.998, 37.604], 'Places storm-resilient frequent transit service at the north-side access gap.', 39_000_000, 90, 0.84, 'ai_recommended'),
-  point('fremon-ai-central-green', 'Central Cooling and Green Corridor', 'park', [-121.970, 37.556], 'Adds walkable cooling refuge and shaded open space at the central heat-exposure deficit.', 14_000_000, 82, 0.82, 'ai_recommended'),
-  point('fremon-ai-mixed-use', 'New Housing Expansion Community Center', 'community_center', [-121.934, 37.514], 'Adds cooling center, shelter services, and community resilience support near new housing.', 28_000_000, 80, 0.8, 'ai_recommended'),
-  point('fremon-ai-west-mobility-hub', 'West Evacuation Transit Stop', 'transit_stop', [-122.055, 37.548], 'Adds an evacuation-capable mobility point where the west district has storm and smoke exposure.', 6_000_000, 74, 0.79, 'ai_recommended'),
+  point('fremon-ai-south-clinic', 'South Emergency Gap Clinic', 'clinic', [-121.984, 37.504], 'Closes the largest emergency and heat response gap for South Fremon growth households.', 18_000_000, 92, 0.87, 'ai_recommended'),
+  point('fremon-ai-east-school', 'East School and Shelter Site', 'school', [-121.936, 37.548], 'Adds classroom capacity and dual-use emergency shelter near East Fremon residential growth.', 32_000_000, 88, 0.85, 'ai_recommended'),
+  point('fremon-ai-north-transit', 'North Transit Resilience Hub', 'transit_stop', [-122.018, 37.578], 'Places storm-resilient frequent transit service at the north-side access gap.', 39_000_000, 90, 0.84, 'ai_recommended'),
+  point('fremon-ai-central-green', 'Central Cooling and Green Corridor', 'park', [-121.965, 37.556], 'Adds walkable cooling refuge and shaded open space at the central heat-exposure deficit.', 14_000_000, 82, 0.82, 'ai_recommended'),
+  point('fremon-ai-mixed-use', 'New Housing Expansion Community Center', 'community_center', [-121.942, 37.516], 'Adds cooling center, shelter services, and community resilience support near new housing.', 28_000_000, 80, 0.8, 'ai_recommended'),
+  point('fremon-ai-west-mobility-hub', 'West Evacuation Transit Stop', 'transit_stop', [-122.026, 37.546], 'Adds an evacuation-capable mobility point where the west district has storm and smoke exposure.', 6_000_000, 74, 0.79, 'ai_recommended'),
 ]
 
 export const FREMON_UNDERSERVED_ZONES: UnderservedZone[] = [
-  zone('fremon-north-transit-gap', 'North Transit Disruption Zone', 'transit_access', [37.604, -121.998], 1550, 0.84, 'North district has poor storm-resilient transit coverage as population grows.', 40, ['fremon-ai-north-transit']),
-  zone('fremon-east-education-gap', 'East School and Shelter Gap', 'school_access', [37.550, -121.918], 1450, 0.88, 'East district lacks dual-use shelter and classroom capacity under growth.', 37, ['fremon-ai-east-school']),
-  zone('fremon-south-emergency-gap', 'South Emergency Gap', 'emergency_access', [37.493, -121.995], 1600, 0.92, 'South district has no clinic or emergency response coverage during extreme weather.', 34, ['fremon-ai-south-clinic']),
-  zone('fremon-central-green-gap', 'Cooling Center Gap', 'green_space', [37.556, -121.970], 1300, 0.74, 'Central district lacks walkable cooling refuge and shaded green space under heat risk.', 46, ['fremon-ai-central-green']),
-  zone('fremon-west-congestion-zone', 'Smoke Shelter Access Gap', 'congestion', [37.548, -122.055], 1500, 0.82, 'West district has limited indoor shelter access during wildfire smoke events.', 39, ['fremon-ai-west-mobility-hub', 'fremon-ai-north-transit']),
-  zone('fremon-housing-utility-gap', 'New Housing Expansion Zone', 'housing_access', [37.514, -121.934], 1450, 0.8, 'New housing needs nearby cooling centers, emergency access, and shelter services.', 43, ['fremon-ai-mixed-use', 'fremon-ai-south-clinic']),
+  zone('fremon-north-transit-gap', 'North Transit Disruption Zone', 'transit_access', [37.578, -122.018], 1550, 0.84, 'North district has poor storm-resilient transit coverage as population grows.', 40, ['fremon-ai-north-transit']),
+  zone('fremon-east-education-gap', 'East School and Shelter Gap', 'school_access', [37.548, -121.936], 1450, 0.88, 'East district lacks dual-use shelter and classroom capacity under growth.', 37, ['fremon-ai-east-school']),
+  zone('fremon-south-emergency-gap', 'South Emergency Gap', 'emergency_access', [37.504, -121.984], 1600, 0.92, 'South district has no clinic or emergency response coverage during extreme weather.', 34, ['fremon-ai-south-clinic']),
+  zone('fremon-central-green-gap', 'Cooling Center Gap', 'green_space', [37.556, -121.965], 1300, 0.74, 'Central district lacks walkable cooling refuge and shaded green space under heat risk.', 46, ['fremon-ai-central-green']),
+  zone('fremon-west-congestion-zone', 'Smoke Shelter Access Gap', 'congestion', [37.546, -122.026], 1500, 0.82, 'West district has limited indoor shelter access during wildfire smoke events.', 39, ['fremon-ai-west-mobility-hub', 'fremon-ai-north-transit']),
+  zone('fremon-housing-utility-gap', 'New Housing Expansion Zone', 'housing_access', [37.516, -121.942], 1450, 0.8, 'New housing needs nearby cooling centers, emergency access, and shelter services.', 43, ['fremon-ai-mixed-use', 'fremon-ai-south-clinic']),
 ]
 
 export const FREMON_GROWTH_PRESSURE_ZONES: GrowthPressureZone[] = [
-  { id: 'fremon-growth-south', name: 'South District Heat Risk Zone', center: [37.493, -121.995], radiusMeters: 1600, pressure: 'high', projectedGrowthPercent: 38, reason: 'High heat exposure combined with new housing concentration and no nearby cooling infrastructure.' },
-  { id: 'fremon-growth-east', name: 'East Flood Vulnerable Zone', center: [37.550, -121.918], radiusMeters: 1500, pressure: 'high', projectedGrowthPercent: 36, reason: 'Low-lying family housing area with simulated flood exposure under 35% growth.' },
-  { id: 'fremon-growth-north', name: 'North Transit Disruption Zone', center: [37.604, -121.998], radiusMeters: 1400, pressure: 'medium', projectedGrowthPercent: 28, reason: 'North district transit is storm-vulnerable and constrained under growth.' },
-  { id: 'fremon-growth-west', name: 'West Smoke Shelter Gap', center: [37.548, -122.055], radiusMeters: 1550, pressure: 'medium', projectedGrowthPercent: 25, reason: 'West residential area has limited indoor shelter access during wildfire smoke events.' },
+  { id: 'fremon-growth-south', name: 'South District Heat Risk Zone', center: [37.504, -121.984], radiusMeters: 1600, pressure: 'high', projectedGrowthPercent: 38, reason: 'High heat exposure combined with new housing concentration and no nearby cooling infrastructure.' },
+  { id: 'fremon-growth-east', name: 'East Flood Vulnerable Zone', center: [37.548, -121.936], radiusMeters: 1500, pressure: 'high', projectedGrowthPercent: 36, reason: 'Low-lying family housing area with simulated flood exposure under 35% growth.' },
+  { id: 'fremon-growth-north', name: 'North Transit Disruption Zone', center: [37.578, -122.018], radiusMeters: 1400, pressure: 'medium', projectedGrowthPercent: 28, reason: 'North district transit is storm-vulnerable and constrained under growth.' },
+  { id: 'fremon-growth-west', name: 'West Smoke Shelter Gap', center: [37.546, -122.026], radiusMeters: 1550, pressure: 'medium', projectedGrowthPercent: 25, reason: 'West residential area has limited indoor shelter access during wildfire smoke events.' },
 ]
 
 export const FREMON_DISTRICTS: DistrictProfile[] = [
-  district('district-north', 'North Transit Disruption Zone', 'Storm-vulnerable transit access', 0.84, 31_000, 'Add storm-resilient transit hub', 40, 72, [37.604, -121.998], 'fremon-north-transit-gap'),
-  district('district-east', 'East Flood Vulnerable Zone', 'Shelter and school access shortage', 0.88, 18_000, 'Add dual-use school and shelter site', 37, 78, [37.550, -121.918], 'fremon-east-education-gap'),
-  district('district-south', 'South Emergency Gap', 'No clinic or emergency response', 0.92, 22_000, 'Add clinic and emergency coverage', 34, 79, [37.493, -121.995], 'fremon-south-emergency-gap'),
-  district('district-central', 'Cooling Center Gap', 'No cooling refuge under heat risk', 0.74, 16_000, 'Add cooling and green corridor', 46, 74, [37.556, -121.970], 'fremon-central-green-gap'),
-  district('district-west', 'Smoke Shelter Access Gap', 'Limited indoor shelter during smoke', 0.82, 9_000, 'Add evacuation transit and shelter', 39, 72, [37.548, -122.055], 'fremon-west-congestion-zone'),
-  district('district-innovation', 'Innovation District', 'Daytime heat exposure for workers', 0.58, 12_000, 'Add shaded routes and cooling stations', 59, 74, [37.572, -121.950]),
-  district('district-housing', 'New Housing Expansion Zone', 'New housing needs resilience services', 0.8, 20_000, 'Add community center with cooling and shelter', 43, 78, [37.514, -121.934], 'fremon-housing-utility-gap'),
-  district('district-industrial', 'Industrial Edge', 'Smoke and heat exposure risk', 0.52, 7_000, 'Buffer with green corridor and shelter', 57, 64, [37.515, -122.035]),
+  district('district-north', 'North Transit Disruption Zone', 'Storm-vulnerable transit access', 0.84, 31_000, 'Add storm-resilient transit hub', 40, 72, [37.578, -122.018], 'fremon-north-transit-gap'),
+  district('district-east', 'East Flood Vulnerable Zone', 'Shelter and school access shortage', 0.88, 18_000, 'Add dual-use school and shelter site', 37, 78, [37.548, -121.936], 'fremon-east-education-gap'),
+  district('district-south', 'South Emergency Gap', 'No clinic or emergency response', 0.92, 22_000, 'Add clinic and emergency coverage', 34, 79, [37.504, -121.984], 'fremon-south-emergency-gap'),
+  district('district-central', 'Cooling Center Gap', 'No cooling refuge under heat risk', 0.74, 16_000, 'Add cooling and green corridor', 46, 74, [37.556, -121.965], 'fremon-central-green-gap'),
+  district('district-west', 'Smoke Shelter Access Gap', 'Limited indoor shelter during smoke', 0.82, 9_000, 'Add evacuation transit and shelter', 39, 72, [37.546, -122.026], 'fremon-west-congestion-zone'),
+  district('district-innovation', 'Innovation District', 'Daytime heat exposure for workers', 0.58, 12_000, 'Add shaded routes and cooling stations', 59, 74, [37.565, -121.946]),
+  district('district-housing', 'New Housing Expansion Zone', 'New housing needs resilience services', 0.8, 20_000, 'Add community center with cooling and shelter', 43, 78, [37.516, -121.942], 'fremon-housing-utility-gap'),
+  district('district-industrial', 'Industrial Edge', 'Smoke and heat exposure risk', 0.52, 7_000, 'Buffer with green corridor and shelter', 57, 64, [37.515, -122.026]),
 ]
 
 export const FREMON_PLAN_BATTLE: PlanBattlePlan[] = [
@@ -202,7 +202,7 @@ export const FREMON_TOP_RECOMMENDATION: AIRecommendation = {
   zoneName: 'South Emergency Gap',
   locationName: 'South Emergency Gap',
   infrastructureType: 'clinic',
-  coordinates: [-121.995, 37.493],
+  coordinates: [-121.984, 37.504],
   reason: 'A 35 percent growth scenario increases heat and emergency response exposure for 22,000 residents. South Emergency Gap lacks clinic and emergency response coverage during extreme weather.',
   expectedImpact: {
     emergencyAccess: 24,
@@ -220,12 +220,12 @@ export const FREMON_TOP_RECOMMENDATION: AIRecommendation = {
 }
 
 export const FREMON_PLACEMENT_SUGGESTIONS: PlacementSuggestion[] = [
-  { id: 'suggest-clinic-south', rank: 1, title: 'South Fremon Heat Risk Zone', category: 'clinic', coordinates: [-121.995, 37.493], expectedImpact: 'Emergency Access +18', costEstimate: 18_000_000, reason: 'Best clinic location: fills the highest-severity emergency and heat response gap.', confidence: 0.87 },
-  { id: 'suggest-clinic-housing', rank: 2, title: 'New Housing Expansion Edge', category: 'clinic', coordinates: [-121.934, 37.514], expectedImpact: 'Emergency Access +12', costEstimate: 16_000_000, reason: 'Serves new housing but is less central to the South Emergency Gap.', confidence: 0.78 },
-  { id: 'suggest-clinic-central', rank: 3, title: 'Central-South Connector', category: 'clinic', coordinates: [-121.982, 37.524], expectedImpact: 'Emergency Access +8', costEstimate: 14_000_000, reason: 'Lower-cost option with smaller weather resilience improvement.', confidence: 0.69 },
-  { id: 'suggest-school-east', rank: 1, title: 'East Shelter and School Site', category: 'school', coordinates: [-121.918, 37.550], expectedImpact: 'Shelter Access +21', costEstimate: 32_000_000, reason: 'Best dual-use site: close to projected family housing growth and flood exposure zone.', confidence: 0.85 },
-  { id: 'suggest-school-housing', rank: 2, title: 'Housing Expansion Shelter Site', category: 'school', coordinates: [-121.934, 37.522], expectedImpact: 'Shelter Access +15', costEstimate: 30_000_000, reason: 'Good site for new families but farther from the flood exposure zone.', confidence: 0.76 },
-  { id: 'suggest-school-industrial-buffer', rank: 3, title: 'Industrial Buffer Shelter Site', category: 'school', coordinates: [-122.020, 37.518], expectedImpact: 'Shelter Access +5', costEstimate: 28_000_000, reason: 'Lower confidence because it approaches the industrial smoke edge.', confidence: 0.52 },
+  { id: 'suggest-clinic-south', rank: 1, title: 'South Fremon Heat Risk Zone', category: 'clinic', coordinates: [-121.984, 37.504], expectedImpact: 'Emergency Access +18', costEstimate: 18_000_000, reason: 'Best clinic location: fills the highest-severity emergency and heat response gap.', confidence: 0.87 },
+  { id: 'suggest-clinic-housing', rank: 2, title: 'New Housing Expansion Edge', category: 'clinic', coordinates: [-121.942, 37.516], expectedImpact: 'Emergency Access +12', costEstimate: 16_000_000, reason: 'Serves new housing but is less central to the South Emergency Gap.', confidence: 0.78 },
+  { id: 'suggest-clinic-central', rank: 3, title: 'Central-South Connector', category: 'clinic', coordinates: [-121.978, 37.524], expectedImpact: 'Emergency Access +8', costEstimate: 14_000_000, reason: 'Lower-cost option with smaller weather resilience improvement.', confidence: 0.69 },
+  { id: 'suggest-school-east', rank: 1, title: 'East Shelter and School Site', category: 'school', coordinates: [-121.936, 37.548], expectedImpact: 'Shelter Access +21', costEstimate: 32_000_000, reason: 'Best dual-use site: close to projected family housing growth and flood exposure zone.', confidence: 0.85 },
+  { id: 'suggest-school-housing', rank: 2, title: 'Housing Expansion Shelter Site', category: 'school', coordinates: [-121.942, 37.522], expectedImpact: 'Shelter Access +15', costEstimate: 30_000_000, reason: 'Good site for new families but farther from the flood exposure zone.', confidence: 0.76 },
+  { id: 'suggest-school-industrial-buffer', rank: 3, title: 'Industrial Buffer Shelter Site', category: 'school', coordinates: [-122.018, 37.518], expectedImpact: 'Shelter Access +5', costEstimate: 28_000_000, reason: 'Lower confidence because it approaches the industrial smoke edge.', confidence: 0.52 },
 ]
 
 export const FREMON_TIMELINE: Record<TimelineYear, { population: number; pressure: number; label: string; phase: string; metrics: PlanningScores }> = {
